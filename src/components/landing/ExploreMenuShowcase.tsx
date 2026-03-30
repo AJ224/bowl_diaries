@@ -20,10 +20,10 @@ export function ExploreMenuShowcase() {
     <FullBleedBackgroundSection
       className="bg-[#fbf3df]"
       backgroundSrc="/exploremenubg.png"
-      backgroundWrapperClassName="-z-10"
-      backgroundImageClassName="object-contain object-center"
+      backgroundWrapperClassName="z-0"
+      backgroundImageClassName="object-cover object-[20%_40%]"
       minHeight="clamp(560px, 63.2vw, 910px)"
-      contentClassName="py-12 md:py-16"
+      contentClassName="relative z-10 py-12 md:py-16"
     >
       <Container>
         <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 md:text-3xl">

@@ -14,9 +14,9 @@ export function BowlieWelcomeShowcase() {
           <FullBleedBackgroundSection
             as="div"
             backgroundSrc="/bg_mascout.png"
-            backgroundWrapperClassName="-z-10"
+            backgroundWrapperClassName="z-0"
             backgroundImageClassName="object-cover"
-            contentClassName="mx-auto w-full max-w-6xl px-5 md:px-6"
+            contentClassName="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-6"
           >
             <div className="grid min-h-[520px] items-center gap-10 py-0 md:min-h-[560px] md:grid-cols-[minmax(320px,624px)_1fr] md:gap-12">
               {/* Mascot: keep 474:503 proportions, responsive size */}
