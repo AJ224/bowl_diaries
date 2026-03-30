@@ -14,13 +14,13 @@ export function BowlieWelcomeShowcase() {
           <FullBleedBackgroundSection
             as="div"
             backgroundSrc="/bg_mascout.png"
-            backgroundWrapperClassName="z-0"
+            backgroundWrapperClassName="z-0 -top-28"  // adjust -top-10 to taste
             backgroundImageClassName="object-cover"
             contentClassName="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-6"
           >
-            <div className="grid min-h-[520px] items-center gap-10 py-0 md:min-h-[560px] md:grid-cols-[minmax(320px,624px)_1fr] md:gap-12">
+            <div className="grid min-h-[520px] items-center py-0 md:min-h-[560px] md:grid-cols-[minmax(300px,600px)_1fr]">
               {/* Mascot: keep 474:503 proportions, responsive size */}
-              <div className="relative mx-auto w-full max-w-[624px] aspect-[474/503] md:mx-0 md:justify-self-start">
+              <div className="relative mx-auto w-full aspect-[474/503] md:mx-0 md:justify-self-start md:-ml-24 ds-anim-fade-up">
                 <Image
                   src="/bowlie_masscout.png"
                   alt="Bowlie mascot"
@@ -31,7 +31,7 @@ export function BowlieWelcomeShowcase() {
                 />
               </div>
 
-              <div className="relative pr-0 md:pr-28 md:max-w-[655px] md:justify-self-start">
+              <div className="relative md:-ml-24 pr-0 md:justify-self-start md:max-w-[760px] md:pr-16 ds-anim-fade-up [animation-delay:80ms]">
                 <div className="ds-h2 text-[#002B2B]">Hey! I&apos;m Bowlie,</div>
                 <div className="mt-4 ds-baloo-26 text-[#002B2B]">
                   Every Bowl Tells A Story!
@@ -49,14 +49,20 @@ export function BowlieWelcomeShowcase() {
                 </p>
 
                 {/* right-side floating buttons (desktop) */}
-                <div className="pointer-events-none absolute right-0 top-[60%] hidden -translate-y-1/2 flex-col items-end gap-5 md:flex">
+                <div className="pointer-events-none absolute right-0 top-[90%] hidden -translate-y-1/2 flex-col items-end gap-5 md:flex">
                   <div className="pointer-events-auto grid size-12 place-items-center rounded-2xl bg-[#f6c200] shadow-[0_10px_20px_rgba(0,0,0,0.18)]">
-                    <span className="text-lg font-black text-[#002B2B]">☎</span>
+                    <Image
+                      src="/icon.svg"
+                      alt="Call"
+                      width={20}
+                      height={20}
+                      className="h-5 w-5"
+                    />
                   </div>
                   <CtaButtonLink
                     href="#menu"
                     variant="floating"
-                    className="pointer-events-auto"
+                    className="pointer-events-auto ds-anim-fade-up [animation-delay:140ms]"
                   >
                     <CartIcon className="size-5" />
                     Order Now
@@ -69,7 +75,7 @@ export function BowlieWelcomeShowcase() {
 
         {/* Welcome row */}
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 md:grid-cols-[1fr_1fr] md:items-end md:px-6">
-          <div>
+          <div className="ds-anim-fade-up">
             <div className="text-sm font-extrabold tracking-[0.22em] text-[#f6c200]">
               WELCOME TO BOWL DIARIES
             </div>
@@ -91,7 +97,7 @@ export function BowlieWelcomeShowcase() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl">
+          <div className="relative mx-auto w-full max-w-xl ds-anim-fade-up [animation-delay:80ms]">
             <Image
               src="/bowl.png"
               alt="Bowl Diaries bowl"

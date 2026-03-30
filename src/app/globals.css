@@ -50,6 +50,15 @@ body {
   }
 }
 
+@keyframes dsMarqueeX {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @layer components {
   .ds-anim-fade-up {
     animation: dsFadeUp 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
@@ -59,9 +68,21 @@ body {
     animation: dsFadeIn 600ms ease-out both;
   }
 
+  .ds-marquee {
+    overflow: hidden;
+  }
+
+  .ds-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: dsMarqueeX 18s linear infinite;
+    will-change: transform;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .ds-anim-fade-up,
-    .ds-anim-fade-in {
+    .ds-anim-fade-in,
+    .ds-marquee-track {
       animation: none;
     }
   }

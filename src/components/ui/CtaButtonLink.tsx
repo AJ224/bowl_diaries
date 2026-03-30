@@ -14,7 +14,7 @@ const BASE =
 const VARIANTS: Record<NonNullable<CtaButtonLinkProps["variant"]>, string> = {
   hero: "min-w-40 rounded-md px-7 py-3.5 text-base shadow-[0_4px_0_rgba(0,0,0,0.25)] active:translate-y-[1px]",
   menuCard:
-    "mt-4 flex h-12 w-full rounded-md text-sm shadow-[0_6px_0_rgba(0,0,0,0.16)] active:translate-y-[1px]",
+    "mt-5 flex h-14 w-full rounded-md text-[15px] shadow-[0_6px_0_rgba(0,0,0,0.16)] active:translate-y-[1px]",
   floating:
     "gap-3 rounded-2xl px-6 py-3.5 text-base text-[#002B2B] shadow-[0_10px_20px_rgba(0,0,0,0.18)] active:translate-y-[1px]",
   promoBar:

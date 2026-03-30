@@ -13,7 +13,7 @@ export function ExcellenceShowcase() {
       <div className="grid h-full items-center md:grid-cols-[1fr_560px]">
         <div className="hidden md:block" />
 
-        <div className="w-full max-w-[560px] py-16 pt-[clamp(280px,55vw,360px)] md:py-0 md:pt-0">
+        <div className="w-full max-w-[560px] py-16 pt-[clamp(280px,55vw,360px)] md:py-0 md:pt-0 ds-anim-fade-up">
           <h2 className="ds-baloo-54 text-left text-[#f6c200]">
             EXECELLENCE IN EVERY MEAL
           </h2>

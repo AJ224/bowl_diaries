@@ -26,7 +26,7 @@ export function ExploreMenuShowcase() {
       contentClassName="relative z-10 py-12 md:py-16"
     >
       <Container>
-        <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 md:text-3xl">
+        <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 md:text-3xl ds-anim-fade-up">
           EXPLORE OUR DELICIOUS MENU
         </h2>
 
@@ -47,13 +47,14 @@ export function ExploreMenuShowcase() {
             ›
           </button>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {cards.map((c) => (
+          <div className="grid gap-7 md:grid-cols-3 md:gap-8">
+            {cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="rounded-2xl bg-[#f7dd9b] p-5 shadow-[0_14px_0_rgba(0,0,0,0.08)]"
+                className="rounded-2xl bg-[#f7dd9b] p-6 shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up"
+                style={{ animationDelay: `${80 + idx * 70}ms` }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-900">
+                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-zinc-900">
                   <Image
                     src={c.imageSrc}
                     alt={c.title}
@@ -62,7 +63,7 @@ export function ExploreMenuShowcase() {
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-4 text-center text-lg font-black tracking-wide text-zinc-900">
+                <div className="mt-5 text-center text-xl font-black tracking-wide text-zinc-900">
                   {c.title}
                 </div>
                 <CtaButtonLink href="#menu" variant="menuCard">

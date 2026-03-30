@@ -15,7 +15,7 @@ export function Navbar() {
   return (
     <header className="border-b border-zinc-900/10 bg-[#fbf3df]">
       <Container className="grid h-20 grid-cols-[auto_1fr_auto] items-center">
-        <a href="#top" className="inline-flex items-center gap-3">
+        <a href="#top" className="inline-flex items-center gap-3 ds-anim-fade-in">
           <Image
             src="/LOGO_1 1.png"
             alt="Bowl Diaries"
@@ -27,7 +27,7 @@ export function Navbar() {
           <span className="sr-only">Bowl Diaries</span>
         </a>
 
-        <nav className="hidden items-center justify-center gap-12 text-base font-semibold text-zinc-900/80 md:flex">
+        <nav className="hidden items-center justify-center gap-12 text-base font-semibold text-zinc-900/80 md:flex ds-anim-fade-in">
           {links.map((t) => (
             <a key={t.label} href={t.href} className="transition hover:text-zinc-900">
               {t.label}
@@ -36,7 +36,11 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center justify-end gap-3">
-          <CtaButtonLink href="#menu" variant="navbar" className="hidden md:inline-flex">
+          <CtaButtonLink
+            href="#menu"
+            variant="navbar"
+            className="hidden md:inline-flex ds-anim-fade-in"
+          >
             <CartIcon className="size-5" />
             Order Now
           </CtaButtonLink>
