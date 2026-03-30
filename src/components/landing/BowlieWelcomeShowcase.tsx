@@ -73,17 +73,48 @@ export function BowlieWelcomeShowcase() {
           </FullBleedBackgroundSection>
         </div>
 
+        {/* mobile-only bowl between sections */}
+        <div className="mx-auto w-full max-w-6xl px-5 pb-4 md:hidden">
+          <div className="relative mx-auto w-full max-w-[520px] ds-anim-fade-up">
+            <Image
+              src="/bowl.png"
+              alt="Bowl Diaries bowl"
+              width={900}
+              height={900}
+              className="h-auto w-full drop-shadow-[0_30px_45px_rgba(0,0,0,0.20)]"
+            />
+          </div>
+        </div>
+
         {/* Welcome row */}
-        <div className="mx-auto grid w-full mx-5 px-12 -mt-12 md:grid-cols-[1fr_1fr] md:items-end">
-          <div className="ds-anim-fade-up relative -top-10 md:-top-24">
-            <div className="ds-baloo-54 text-left text-[#F1C400]">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 pt-2 md:grid-cols-[1fr_1fr] md:items-end md:px-6 md:pt-0 md:-mt-10">
+          <div className="ds-anim-fade-up md:relative md:-top-10">
+            <div
+              className="text-left font-medium leading-none tracking-[0] text-[#F1C400]"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(34px, 6.2vw, 54px)",
+              }}
+            >
               WELCOME TO BOWL DIARIES
             </div>
-            <div className="mt-5 ds-grift-26 italic text-[#002B2B]">
+            <div
+              className="mt-4 text-left font-medium italic leading-none tracking-[0] text-[#002B2B]"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "clamp(18px, 3.4vw, 26px)",
+              }}
+            >
               Fresh Food, Crafted With Care
             </div>
 
-            <p className="mt-6 max-w-xl whitespace-pre-line ds-grift-26 text-[#002B2B]">
+            <p
+              className="mt-5 max-w-xl whitespace-pre-line text-left font-medium leading-none tracking-[0] text-[#002B2B]"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "clamp(18px, 3.4vw, 26px)",
+              }}
+            >
               Bowl Diaries serves healthy, hygienic, and authentic
               meals crafted with premium ingredients.
               Blending traditional flavors with modern favorites,
@@ -98,7 +129,7 @@ export function BowlieWelcomeShowcase() {
             </div>
           </div>
 
-          <div className="relative w-full max-w-xl ds-anim-fade-up [animation-delay:80ms]">
+          <div className="relative hidden w-full max-w-xl ds-anim-fade-up [animation-delay:80ms] md:block">
             <Image
               src="/bowl.png"
               alt="Bowl Diaries bowl"

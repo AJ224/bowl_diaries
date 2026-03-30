@@ -18,12 +18,12 @@ export function Footer() {
           fill
           priority={false}
           sizes="100vw"
-          className="object-contain object-center"
+          className="object-contain object-bottom"
         />
       </div>
 
       {/* mascot artwork (bottom-right) */}
-      <div className="pointer-events-none absolute bottom-[-10px] right-[-28px] z-[5] w-[240px] md:bottom-[-18px] md:right-[-36px] md:w-[340px] lg:bottom-[-24px] lg:right-[-48px] lg:w-[420px]">
+      <div className="pointer-events-none absolute bottom-[-10px] right-2 z-[5] w-[240px] md:bottom-[-18px] md:right-4 md:w-[340px] lg:bottom-[-24px] lg:right-6 lg:w-[420px]">
         <Image
           src="/footer_mascout.png"
           alt=""
@@ -34,62 +34,82 @@ export function Footer() {
         />
       </div>
 
-      <Container className="relative z-10 grid items-start gap-10 py-12 md:grid-cols-[1.25fr_0.85fr_0.85fr_0.75fr] md:gap-12">
-        <div className="ds-anim-fade-up">
-          <Image
-            src="/footer_logo.png"
-            alt="Bowl Diaries"
-            width={220}
-            height={120}
-            priority={false}
-            className="h-auto w-[210px] md:w-[240px]"
-          />
+      <Container className="relative z-10 py-8 md:py-16">
+        {/* Main grid: logo+contact on left, nav columns on right */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-6 lg:gap-8">
+          {/* Left: Logo + Contact Info */}
+          <div className="ds-anim-fade-up">
+            <Image
+              src="/footer_logo.png"
+              alt="Bowl Diaries"
+              width={220}
+              height={120}
+              priority={false}
+              className="h-auto w-[160px] md:w-[200px] lg:w-[220px]"
+            />
 
-          <div className="mt-6 space-y-5 text-[13px] leading-[1.65] text-white/90 md:text-[14px]">
-            <div className="flex gap-3">
-              <IconPin className="mt-0.5 size-[18px] shrink-0 text-white/90 md:size-5" />
-              <div>
-                Shop no. 1, Rebecca Queen, Sagershet Rd,
-                <br />
-                Perbodi Wadi, Orbhat, Vasai West,
-                <br />
-                Mulgaon, Vasai-Virar, Maharashtra 401207
+            <div className="mt-4 space-y-3 text-white/90 md:mt-6 md:space-y-4">
+              {/* Address */}
+              <div className="flex gap-3">
+                <IconPin className="mt-0.5 size-4 shrink-0 text-white/80 md:size-[18px]" />
+                <p
+                  className="text-[22px] font-normal leading-none tracking-[0]"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat,
+                  Vasai West, Mulgaon, Vasai-Virar, Maharashtra 401207
+                </p>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-3">
+                <IconPhone className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+                <a
+                  className="text-[22px] font-normal leading-none transition hover:text-white"
+                  href="tel:+917770060798"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  +91 77700 60798
+                </a>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3">
+                <IconMail className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+                <a
+                  className="text-[22px] font-normal leading-none transition hover:text-white"
+                  href="mailto:info@bowldiaries.com"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  info@bowldiaries.com
+                </a>
               </div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <IconPhone className="size-[18px] shrink-0 text-white/90 md:size-5" />
-              <a className="transition hover:text-white" href="tel:+917770060798">
-                +91 77700 60798
-              </a>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <IconMail className="size-[18px] shrink-0 text-white/90 md:size-5" />
-              <a className="transition hover:text-white" href="mailto:info@bowldiaries.com">
-                info@bowldiaries.com
-              </a>
-            </div>
           </div>
-        </div>
 
-        <FooterCol
-          title="Company"
-          links={[
-            { label: "About Us", href: "#about" },
-            { label: "Our Story", href: "#about" },
-            { label: "Location", href: "#contact" },
-          ]}
-        />
-        <FooterCol
-          title="Get Help"
-          links={[
-            { label: "Contact Us", href: "#contact" },
-            { label: "Help & Support", href: "#contact" },
-            { label: "Location", href: "#contact" },
-          ]}
-        />
-        <SocialCol />
+          {/* Company */}
+          <FooterCol
+            title="Company"
+            links={[
+              { label: "About Us", href: "#about" },
+              { label: "Our Story", href: "#about" },
+              { label: "Location", href: "#contact" },
+            ]}
+          />
+
+          {/* Get Help */}
+          <FooterCol
+            title="Get Help"
+            links={[
+              { label: "Contact Us", href: "#contact" },
+              { label: "Help & Support", href: "#contact" },
+              { label: "Location", href: "#contact" },
+            ]}
+          />
+
+          {/* Social Media */}
+          <SocialCol />
+        </div>
       </Container>
     </footer>
   );
@@ -98,19 +118,24 @@ export function Footer() {
 function FooterCol({
   title,
   links,
-}: Readonly<{ title: string; links: FooterLink[] }>) {
+  className,
+}: Readonly<{ title: string; links: FooterLink[]; className?: string }>) {
   return (
-    <div className="ds-anim-fade-up">
-      <div
-        className="text-[15px] font-semibold leading-none text-[#f6c200] md:text-[16px]"
+    <div className={`ds-anim-fade-up ${className ?? ""}`}>
+      <h3
+        className="text-[28px] font-medium leading-none text-[#f6c200]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         {title}
-      </div>
-      <ul className="mt-5 space-y-3 text-[13px] text-white/90 md:text-[14px]">
+      </h3>
+      <ul className="mt-3 space-y-2 md:mt-6 md:space-y-4">
         {links.map((l) => (
           <li key={l.label}>
-            <a href={l.href} className="transition hover:text-white">
+            <a
+              href={l.href}
+              className="text-[22px] font-normal leading-none text-white/80 transition hover:text-white md:leading-[21px]"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
               {l.label}
             </a>
           </li>
@@ -123,23 +148,23 @@ function FooterCol({
 function SocialCol() {
   return (
     <div className="ds-anim-fade-up">
-      <div
-        className="text-[15px] font-semibold leading-none text-[#f6c200] md:text-[16px]"
+      <h3
+        className="text-[28px] font-medium leading-none text-[#f6c200]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Social Media
-      </div>
-      <div className="mt-5 flex items-center gap-4">
+      </h3>
+      <div className="mt-3 flex items-center gap-3 md:mt-6">
         <a
           href="https://instagram.com"
-          className="inline-flex size-9 items-center justify-center rounded-md border border-white/20 bg-white/10 transition hover:bg-white/15"
+          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
           aria-label="Instagram"
         >
           <IconInstagram className="size-5 text-white" />
         </a>
         <a
           href="https://facebook.com"
-          className="inline-flex size-9 items-center justify-center rounded-md border border-white/20 bg-white/10 transition hover:bg-white/15"
+          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
           aria-label="Facebook"
         >
           <IconFacebook className="size-5 text-white" />
@@ -148,6 +173,8 @@ function SocialCol() {
     </div>
   );
 }
+
+/* ── Icons ── */
 
 function IconPin(props: Readonly<{ className?: string }>) {
   return (
@@ -196,8 +223,8 @@ function IconMail(props: Readonly<{ className?: string }>) {
       className={props.className}
       aria-hidden="true"
     >
-      <path d="M4 4h16v16H4z" />
-      <path d="m22 6-10 7L2 6" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-10 7L2 7" />
     </svg>
   );
 }
@@ -233,4 +260,3 @@ function IconFacebook(props: Readonly<{ className?: string }>) {
     </svg>
   );
 }
-
