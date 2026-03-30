@@ -1,40 +1,48 @@
-import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundSection";
+import Image from "next/image";
+
+import { Container } from "@/components/ui/Container";
 
 export function ExcellenceShowcase() {
   return (
-    <FullBleedBackgroundSection
-      className="-mt-10 bg-[#fbf3df] md:-mt-14"
-      backgroundSrc="/excellence.png"
-      backgroundWrapperClassName="z-0"
-      backgroundImageClassName="object-contain object-left"
-      minHeight="clamp(520px, 93.5vw, 644px)"
-      contentClassName="relative z-10 mx-auto w-full px-5 md:px-6"
-    >
-      <div className="grid h-full items-center md:grid-cols-[1fr_560px]">
-        <div className="hidden md:block" />
+    <section className="bg-[#fbf3df] py-10 md:py-14">
+      <Container>
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-12">
+          {/* visual (same pattern as Welcome section) */}
+          <div className="relative mx-auto w-full max-w-[640px] ds-anim-fade-up md:mx-0 md:justify-self-start">
+            <div className="relative aspect-[689/644] w-full overflow-hidden">
+              <Image
+                src="/excellence.png"
+                alt=""
+                fill
+                sizes="(min-width: 768px) 640px, 92vw"
+                className="object-cover object-left"
+              />
+            </div>
+          </div>
 
-        <div className="w-full max-w-[560px] py-16 pt-[clamp(280px,55vw,360px)] md:py-0 md:pt-0 ds-anim-fade-up">
-          <h2 className="ds-baloo-54 text-left text-[#f6c200]">
-            EXECELLENCE IN EVERY MEAL
-          </h2>
+          <div className="ds-anim-fade-up [animation-delay:80ms]">
+            <h2 className="ds-baloo-54 text-left text-[#f6c200]">
+              EXECELLENCE IN EVERY MEAL
+            </h2>
 
-          <p className="mt-6 whitespace-pre-line text-left ds-grift-26 text-[#002B2B]">
-            Our mission is to create memorable food experiences by
-            {"\n"}combining authentic flavors with modern convenience.
-          </p>
+            <p className="mt-6 whitespace-pre-line text-left ds-grift-26 text-[#002B2B]">
+              Our mission is to create memorable food experiences by
+              {"\n"}combining authentic flavors with modern convenience.
+            </p>
 
-          <div className="mt-8 text-left ds-grift-26 text-[#002B2B]">
-            <div className="mb-3">We focus on:</div>
-            <ul className="space-y-2">
-              <li>• Ethical sourcing of ingredients</li>
-              <li>• Maintaining strict hygiene standards</li>
-              <li>• Delivering fresh and flavorful meals</li>
-              <li>• Providing quick and reliable service</li>
-            </ul>
+            <div className="mt-8 text-left ds-grift-26 text-[#002B2B]">
+              <div className="mb-3">We focus on:</div>
+              <ul className="space-y-2">
+                <li>• Ethical sourcing of ingredients</li>
+                <li>• Maintaining strict hygiene standards</li>
+                <li>• Delivering fresh and flavorful meals</li>
+                <li>• Providing quick and reliable service</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </FullBleedBackgroundSection>
+      </Container>
+    </section>
   );
 }
 

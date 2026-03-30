@@ -22,8 +22,7 @@ export function ExploreMenuShowcase() {
       backgroundSrc="/exploremenubg.png"
       backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
       backgroundImageClassName="object-cover object-[20%_40%]"
-      minHeight="clamp(560px, 63.2vw, 910px)"
-      contentClassName="relative z-10 py-12 md:py-16"
+      contentClassName="relative z-10 pt-20 pb-6 md:pt-12 md:pb-12"
     >
       <Container className="max-w-none">
         <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 text-2xl md:text-4xl ds-anim-fade-up">
