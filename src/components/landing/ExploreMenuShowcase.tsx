@@ -26,7 +26,7 @@ export function ExploreMenuShowcase() {
       contentClassName="relative z-10 py-12 md:py-16"
     >
       <Container>
-        <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 md:text-3xl ds-anim-fade-up">
+        <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 text-2xl md:text-4xl ds-anim-fade-up">
           EXPLORE OUR DELICIOUS MENU
         </h2>
 
