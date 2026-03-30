@@ -143,6 +143,14 @@ body {
     letter-spacing: 0;
   }
 
+  .ds-grift-32 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
   .ds-body-lg {
     font-family: var(--font-body);
     font-weight: 500;

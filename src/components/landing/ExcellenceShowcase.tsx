@@ -3,12 +3,12 @@ import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundS
 export function ExcellenceShowcase() {
   return (
     <FullBleedBackgroundSection
-      className="bg-[#fbf3df]"
+      className="-mt-10 bg-[#fbf3df] md:-mt-14"
       backgroundSrc="/excellence.png"
       backgroundWrapperClassName="z-0"
       backgroundImageClassName="object-contain object-left"
       minHeight="clamp(520px, 93.5vw, 644px)"
-      contentClassName="relative z-10 mx-auto w-full max-w-6xl px-5 md:px-6"
+      contentClassName="relative z-10 mx-auto w-full px-5 md:px-6"
     >
       <div className="grid h-full items-center md:grid-cols-[1fr_560px]">
         <div className="hidden md:block" />

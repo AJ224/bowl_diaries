@@ -20,41 +20,41 @@ export function ExploreMenuShowcase() {
     <FullBleedBackgroundSection
       className="bg-[#fbf3df]"
       backgroundSrc="/exploremenubg.png"
-      backgroundWrapperClassName="z-0"
+      backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
       backgroundImageClassName="object-cover object-[20%_40%]"
       minHeight="clamp(560px, 63.2vw, 910px)"
       contentClassName="relative z-10 py-12 md:py-16"
     >
-      <Container>
+      <Container className="max-w-none">
         <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 text-2xl md:text-4xl ds-anim-fade-up">
           EXPLORE OUR DELICIOUS MENU
         </h2>
 
-        <div className="relative mt-10">
-          {/* arrows */}
+        <div className="relative mt-10 md:px-14">
+          {/* arrows (desktop) */}
           <button
             type="button"
             aria-label="Previous"
-            className="absolute left-0 top-1/2 hidden size-11 -translate-x-6 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
+            className="absolute left-0 top-1/2 hidden size-12 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-xl text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
           >
             ‹
           </button>
           <button
             type="button"
             aria-label="Next"
-            className="absolute right-0 top-1/2 hidden size-11 translate-x-6 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
+            className="absolute right-0 top-1/2 hidden size-12 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-xl text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
           >
             ›
           </button>
 
-          <div className="grid gap-7 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="rounded-2xl bg-[#f7dd9b] p-6 shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up"
+                className="mx-auto flex w-full max-w-[420px] flex-col gap-[10px] rounded-[20px] bg-[#f7dd9b] p-[28px] shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up lg:mx-0 lg:min-h-[445px]"
                 style={{ animationDelay: `${80 + idx * 70}ms` }}
               >
-                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-zinc-900">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-zinc-900">
                   <Image
                     src={c.imageSrc}
                     alt={c.title}
@@ -63,7 +63,7 @@ export function ExploreMenuShowcase() {
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-5 text-center text-xl font-black tracking-wide text-zinc-900">
+                <div className="text-center ds-grift-32 text-[#002B2B]">
                   {c.title}
                 </div>
                 <CtaButtonLink href="#menu" variant="menuCard">
