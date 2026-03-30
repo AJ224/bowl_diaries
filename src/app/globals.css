@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-display: var(--font-baloo2);
+  /* Grift isn't bundled yet; keep it as the first choice and fall back */
+  --font-body: Grift, var(--font-geist-sans);
 }
 
 @theme inline {
@@ -20,7 +23,108 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(245, 182, 0, 0.35);
+}
+
+@layer components {
+  .ds-h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-baloo-54 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 54px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-baloo-26 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-grift-26 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-body-lg {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  .ds-body-sm {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  .ds-cta {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ds-caption {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .ds-overline {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
 }
