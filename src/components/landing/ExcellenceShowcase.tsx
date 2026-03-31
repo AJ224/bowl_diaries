@@ -21,22 +21,22 @@ export function ExcellenceShowcase() {
           </div>
 
           <div className="ds-anim-fade-up [animation-delay:80ms]">
-            <h2 className="ds-baloo-54 text-left text-[#f6c200]">
+            <h2 className="text-left text-[#f6c200] text-[34px] leading-tight md:ds-baloo-54 md:leading-tight">
               EXECELLENCE IN EVERY MEAL
             </h2>
 
-            <p className="mt-6 whitespace-pre-line text-left ds-grift-26 text-[#002B2B]">
+            <p className="mt-4 whitespace-pre-line text-left text-[#002B2B] text-[18px] leading-relaxed md:mt-6 md:ds-grift-26 md:leading-snug">
               Our mission is to create memorable food experiences by
               {"\n"}combining authentic flavors with modern convenience.
             </p>
 
-            <div className="mt-8 text-left ds-grift-26 text-[#002B2B]">
-              <div className="mb-3">We focus on:</div>
-              <ul className="space-y-2">
-                <li>• Ethical sourcing of ingredients</li>
-                <li>• Maintaining strict hygiene standards</li>
-                <li>• Delivering fresh and flavorful meals</li>
-                <li>• Providing quick and reliable service</li>
+            <div className="mt-6 text-left text-[#002B2B] text-[18px] leading-relaxed md:mt-8 md:ds-grift-26 md:leading-snug">
+              <div className="mb-3 font-semibold">We focus on:</div>
+              <ul className="list-disc space-y-2 pl-5 md:space-y-3">
+                <li>Ethical sourcing of ingredients</li>
+                <li>Maintaining strict hygiene standards</li>
+                <li>Delivering fresh and flavorful meals</li>
+                <li>Providing quick and reliable service</li>
               </ul>
             </div>
           </div>

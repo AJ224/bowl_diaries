@@ -23,7 +23,7 @@ export function Footer() {
       </div>
 
       {/* mascot artwork (bottom-right) */}
-      <div className="pointer-events-none absolute bottom-[-10px] right-2 z-[5] w-[240px] md:bottom-[-18px] md:right-4 md:w-[340px] lg:bottom-[-24px] lg:right-6 lg:w-[420px]">
+      <div className="pointer-events-none absolute bottom-[-10px] right-2 z-[5] hidden w-[240px] md:block md:bottom-[-18px] md:right-4 md:w-[340px] lg:bottom-[-24px] lg:right-6 lg:w-[420px]">
         <Image
           src="/footer_mascout.png"
           alt=""
@@ -53,7 +53,7 @@ export function Footer() {
               <div className="flex gap-3">
                 <IconPin className="mt-0.5 size-4 shrink-0 text-white/80 md:size-[18px]" />
                 <p
-                  className="text-[22px] font-normal leading-none tracking-[0]"
+                  className="text-[18px] font-normal leading-snug tracking-[0] md:text-[20px]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat,
@@ -65,7 +65,7 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <IconPhone className="size-4 shrink-0 text-white/80 md:size-[18px]" />
                 <a
-                  className="text-[22px] font-normal leading-none transition hover:text-white"
+                  className="text-[18px] font-normal leading-snug transition hover:text-white md:text-[20px]"
                   href="tel:+917770060798"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
@@ -77,7 +77,7 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <IconMail className="size-4 shrink-0 text-white/80 md:size-[18px]" />
                 <a
-                  className="text-[22px] font-normal leading-none transition hover:text-white"
+                  className="text-[18px] font-normal leading-snug transition hover:text-white md:text-[20px]"
                   href="mailto:info@bowldiaries.com"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
@@ -87,28 +87,31 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company */}
-          <FooterCol
-            title="Company"
-            links={[
-              { label: "About Us", href: "#about" },
-              { label: "Our Story", href: "#about" },
-              { label: "Location", href: "#contact" },
-            ]}
-          />
+          {/* On mobile: 3 columns for link sections. On md+: keep 4-col layout via contents */}
+          <div className="grid grid-cols-3 gap-4 md:contents">
+            {/* Company */}
+            <FooterCol
+              title="Company"
+              links={[
+                { label: "About Us", href: "#about" },
+                { label: "Our Story", href: "#about" },
+                { label: "Location", href: "#contact" },
+              ]}
+            />
 
-          {/* Get Help */}
-          <FooterCol
-            title="Get Help"
-            links={[
-              { label: "Contact Us", href: "#contact" },
-              { label: "Help & Support", href: "#contact" },
-              { label: "Location", href: "#contact" },
-            ]}
-          />
+            {/* Get Help */}
+            <FooterCol
+              title="Get Help"
+              links={[
+                { label: "Contact Us", href: "#contact" },
+                { label: "Help & Support", href: "#contact" },
+                { label: "Location", href: "#contact" },
+              ]}
+            />
 
-          {/* Social Media */}
-          <SocialCol />
+            {/* Social Media */}
+            <SocialCol />
+          </div>
         </div>
       </Container>
     </footer>
@@ -123,17 +126,17 @@ function FooterCol({
   return (
     <div className={`ds-anim-fade-up ${className ?? ""}`}>
       <h3
-        className="text-[28px] font-medium leading-none text-[#f6c200]"
+        className="text-[24px] font-medium leading-tight text-[#f6c200] md:text-[28px]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         {title}
       </h3>
-      <ul className="mt-3 space-y-2 md:mt-6 md:space-y-4">
+      <ul className="mt-3 space-y-2.5 md:mt-6 md:space-y-3.5">
         {links.map((l) => (
           <li key={l.label}>
             <a
               href={l.href}
-              className="text-[22px] font-normal leading-none text-white/80 transition hover:text-white md:leading-[21px]"
+              className="text-[18px] font-normal leading-snug text-white/80 transition hover:text-white md:text-[20px]"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {l.label}
@@ -149,7 +152,7 @@ function SocialCol() {
   return (
     <div className="ds-anim-fade-up">
       <h3
-        className="text-[28px] font-medium leading-none text-[#f6c200]"
+        className="text-[24px] font-medium leading-tight text-[#f6c200] md:text-[28px]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Social Media

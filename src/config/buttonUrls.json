@@ -3,10 +3,10 @@
   "exploreMenu": "#menu",
   "orderMenu": {
     "call": "tel:+917770060798",
-    "location": "#",
-    "takeaway": "#",
-    "zomato": "#",
-    "swiggy": "#",
-    "petpooja": "#"
+    "location": "#menu",
+    "takeaway": "#menu",
+    "zomato": "#menu",
+    "swiggy": "#menu",
+    "petpooja": "#menu"
   }
 }

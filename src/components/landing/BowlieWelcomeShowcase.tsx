@@ -33,19 +33,21 @@ export function BowlieWelcomeShowcase() {
               </div>
 
               <div className="relative md:-ml-36 pr-0 md:justify-self-start md:max-w-[980px] md:pr-0 ds-anim-fade-up [animation-delay:80ms]">
-                <div className="ds-h2 text-[#002B2B]">Hey! I&apos;m Bowlie,</div>
-                <div className="mt-4 ds-baloo-26 text-[#002B2B]">
+                <div className="text-[#002B2B] text-[34px] leading-tight md:ds-h2 md:leading-tight">
+                  Hey! I&apos;m Bowlie,
+                </div>
+                <div className="mt-3 text-[#002B2B] text-[18px] leading-snug md:mt-4 md:ds-baloo-26 md:leading-snug">
                   Every Bowl Tells A Story!
                 </div>
-                <div className="mt-3 ds-grift-26 text-[#002B2B]">
+                <div className="mt-3 text-[#002B2B] text-[18px] leading-relaxed md:ds-grift-26 md:leading-snug">
                   The happy face of{" "}
                   <span className="font-medium italic">BOWL DIARIES</span>.
                 </div>
 
-                <p className="mt-5 ds-grift-26 text-[#002B2B]">
+                <p className="mt-4 text-[#002B2B] text-[18px] leading-relaxed md:mt-5 md:ds-grift-26 md:leading-snug">
                   I&apos;m here to bring you bowls full of flavor, freshness, and happiness. Every bowl on this menu is carefully picked to give you a delicious and joyful experience.
                 </p>
-                <p className="mt-4 ds-grift-26 text-[#002B2B]">
+                <p className="mt-4 text-[#002B2B] text-[18px] leading-relaxed md:ds-grift-26 md:leading-snug">
                   So go ahead, explore the menu and find your perfect bowl!
                 </p>
               </div>
@@ -91,7 +93,7 @@ export function BowlieWelcomeShowcase() {
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 pt-2 md:grid-cols-[1fr_1fr] md:items-end md:px-6 md:pt-0 md:-mt-10">
           <div className="ds-anim-fade-up md:relative md:-top-10">
             <div
-              className="text-left font-medium leading-none tracking-[0] text-[#F1C400]"
+              className="text-left font-medium leading-tight tracking-[0] text-[#F1C400]"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(34px, 6.2vw, 54px)",
@@ -100,7 +102,7 @@ export function BowlieWelcomeShowcase() {
               WELCOME TO BOWL DIARIES
             </div>
             <div
-              className="mt-4 text-left font-medium italic leading-none tracking-[0] text-[#002B2B]"
+              className="mt-4 text-left font-medium italic leading-snug tracking-[0] text-[#002B2B]"
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "clamp(18px, 3.4vw, 26px)",
@@ -110,7 +112,7 @@ export function BowlieWelcomeShowcase() {
             </div>
 
             <p
-              className="mt-5 max-w-xl whitespace-pre-line text-left font-medium leading-none tracking-[0] text-[#002B2B]"
+              className="mt-5 max-w-xl whitespace-pre-line text-left font-medium leading-relaxed tracking-[0] text-[#002B2B]"
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "clamp(18px, 3.4vw, 26px)",

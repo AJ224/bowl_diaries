@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
+import { CartIcon } from "@/components/icons/CartIcon";
 import buttonUrls from "@/config/buttonUrls.json";
 
 type MenuItem = Readonly<{
@@ -25,8 +26,8 @@ export function FloatingOrderButton() {
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement | null>(null);
 
-  const items: MenuItem[] = useMemo(
-    () => [
+  const items: MenuItem[] = useMemo(() => {
+    const next: MenuItem[] = [
       {
         key: "call",
         label: "Call",
@@ -63,9 +64,10 @@ export function FloatingOrderButton() {
         href: buttonUrls.orderMenu.petpooja,
         icon: <BrandBadge text="P" className="bg-[#0f5a3c] text-white" />,
       },
-    ],
-    []
-  );
+    ];
+
+    return next.filter((i) => !isDisabledHref(i.href));
+  }, []);
 
   useEffect(() => {
     function onPointerDown(e: PointerEvent) {
@@ -87,6 +89,8 @@ export function FloatingOrderButton() {
     };
   }, [open]);
 
+  if (items.length === 0) return null;
+
   return (
     <div
       ref={rootRef}
@@ -95,7 +99,7 @@ export function FloatingOrderButton() {
       {/* menu */}
       <div
         id={panelId}
-        className={`w-[240px] overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur transition ${
+        className={`w-[220px] overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/90 shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur transition md:w-[240px] ${
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-2 opacity-0"
@@ -108,24 +112,7 @@ export function FloatingOrderButton() {
         </div>
         <div className="px-2 pb-2">
           {items.map((item) => {
-            const disabled = isDisabledHref(item.href);
             const external = isExternalHref(item.href);
-
-            if (disabled) {
-              return (
-                <div
-                  key={item.key}
-                  role="menuitem"
-                  aria-disabled="true"
-                  className="flex cursor-not-allowed items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold text-zinc-400"
-                >
-                  <span className="inline-flex size-9 items-center justify-center rounded-xl bg-zinc-100">
-                    {item.icon}
-                  </span>
-                  <span className="flex-1">{item.label}</span>
-                </div>
-              );
-            }
 
             return (
               <a
@@ -159,11 +146,12 @@ export function FloatingOrderButton() {
         aria-haspopup="menu"
         aria-controls={panelId}
         aria-expanded={open}
+        aria-label="Order"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-3 rounded-2xl bg-[#f6c200] px-5 py-3.5 text-base font-extrabold text-[#002B2B] shadow-[0_14px_26px_rgba(0,0,0,0.22)] transition hover:brightness-95 active:translate-y-[1px]"
+        className="inline-flex items-center gap-3 rounded-2xl bg-[#f6c200] px-5 py-3.5 text-base font-extrabold text-[#002B2B] shadow-[0_14px_26px_rgba(0,0,0,0.22)] transition hover:brightness-95 active:translate-y-[1px] md:gap-0 md:px-4 md:py-4"
       >
-        <IconCart className="size-5" />
-        Order
+        <CartIcon className="size-5" />
+        <span className="md:hidden">Order</span>
       </button>
     </div>
   );
@@ -180,25 +168,6 @@ function BrandBadge({
     >
       {text}
     </span>
-  );
-}
-
-function IconCart(props: Readonly<{ className?: string }>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={props.className}
-      aria-hidden="true"
-    >
-      <circle cx="9" cy="21" r="1" />
-      <circle cx="20" cy="21" r="1" />
-      <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
-    </svg>
   );
 }
 
