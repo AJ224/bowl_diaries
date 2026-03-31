@@ -15,10 +15,14 @@ export function ExploreMenuShowcase() {
     { title: "RICE BOWLS", imageSrc: "/menu_1.png" },
     { title: "INDIAN BOWLS", imageSrc: "/menu_2.png" },
     { title: "PASTA BOWLS", imageSrc: "/menu_3.png" },
+    { title: "SALAD BOWLS", imageSrc: "/menu_1.png" },
+    { title: "NOODLE BOWLS", imageSrc: "/menu_2.png" },
+    { title: "SNACKS", imageSrc: "/menu_3.png" },
   ];
 
   return (
     <FullBleedBackgroundSection
+      id="menu"
       className="bg-[#fbf3df]"
       backgroundSrc="/exploremenubg.png"
       backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
@@ -47,11 +51,12 @@ export function ExploreMenuShowcase() {
             ›
           </button>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {/* scroller on mobile, grid on lg+ */}
+          <div className="-mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:grid lg:snap-none lg:overflow-visible lg:px-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="mx-auto flex w-full max-w-[420px] flex-col gap-[10px] rounded-[20px] bg-[#f7dd9b] p-[28px] shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up lg:mx-0 lg:min-h-[445px]"
+                className="snap-center mx-auto flex w-[min(86vw,420px)] shrink-0 flex-col gap-[10px] rounded-[20px] bg-[#f7dd9b] p-[28px] shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up lg:mx-0 lg:min-h-[445px] lg:w-auto lg:shrink"
                 style={{ animationDelay: `${80 + idx * 70}ms` }}
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-zinc-900">
@@ -59,13 +64,11 @@ export function ExploreMenuShowcase() {
                     src={c.imageSrc}
                     alt={c.title}
                     fill
-                    sizes="(min-width: 768px) 320px, 90vw"
+                    sizes="(min-width: 1024px) 320px, 86vw"
                     className="object-cover"
                   />
                 </div>
-                <div className="text-center ds-grift-32 text-[#002B2B]">
-                  {c.title}
-                </div>
+                <div className="text-center ds-grift-32 text-[#002B2B]">{c.title}</div>
                 <CtaButtonLink href={urls.orderNowUrl} variant="menuCard">
                   ORDER NOW
                 </CtaButtonLink>

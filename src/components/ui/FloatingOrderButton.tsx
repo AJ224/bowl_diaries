@@ -39,25 +39,26 @@ export function FloatingOrderButton() {
   const items = useMemo<MenuItem[]>(() => {
     const list: MenuItem[] = [
       {
-        key: "call",
-        label: "Call",
-        subLabel: "Talk to us",
-        href: urls.callUrl ?? "",
-        icon: <IconPhone className="size-4 text-[#002B2B]" />,
-      },
-      {
-        key: "location",
-        label: "Location",
-        subLabel: "Get directions",
-        href: urls.locationUrl ?? "",
-        icon: <IconPin className="size-4 text-[#002B2B]" />,
+        key: "website",
+        label: "From our website",
+        subLabel: "Order directly here",
+        href: urls.orderNowUrl ?? "",
+        icon: <IconGlobe className="size-4 text-[#002B2B]" />,
       },
       {
         key: "takeaway",
         label: "Takeaway",
-        subLabel: "Order directly",
-        href: urls.takeawayUrl ?? urls.orderNowUrl ?? "",
-        icon: <CartIcon className="size-4 text-[#002B2B]" />,
+        subLabel: "Menu card",
+        href: urls.takeawayUrl ?? "",
+        icon: <IconReceipt className="size-4 text-[#002B2B]" />,
+      },
+      {
+        key: "directions",
+        label: "Get Direction",
+        subLabel: "Open Google maps",
+        href: urls.locationUrl ?? "",
+        icon: <IconPin className="size-4 text-[#002B2B]" />,
+        external: true,
       },
       {
         key: "zomato",
@@ -71,13 +72,6 @@ export function FloatingOrderButton() {
         label: "Swiggy",
         href: urls.swiggyUrl ?? "",
         icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
-        external: true,
-      },
-      {
-        key: "petpooja",
-        label: "Petpooja",
-        href: urls.petpoojaUrl ?? "",
-        icon: <BrandMark label="P" className="bg-[#00AEEF] text-white" />,
         external: true,
       },
     ];
@@ -107,10 +101,22 @@ export function FloatingOrderButton() {
   if (items.length === 0) return null;
 
   return (
-    <div
-      ref={rootRef}
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
-    >
+    <>
+      {/* Floating call button (bottom-left) */}
+      {urls.callUrl ? (
+        <a
+          href={urls.callUrl}
+          className="fixed bottom-6 left-6 z-50 inline-flex size-14 items-center justify-center rounded-2xl bg-[#f6c200] text-[#002B2B] shadow-[0_18px_50px_rgba(0,0,0,0.25)] transition hover:brightness-95 active:translate-y-[1px]"
+          aria-label="Call Bowl Diaries"
+        >
+          <IconPhone className="size-6 text-[#002B2B]" />
+        </a>
+      ) : null}
+
+      <div
+        ref={rootRef}
+        className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
+      >
       {open ? (
         <div
           id={panelId}
@@ -182,7 +188,8 @@ export function FloatingOrderButton() {
           {open ? "Close" : "Order Now"}
         </span>
       </button>
-    </div>
+      </div>
+    </>
   );
 }
 
@@ -217,6 +224,46 @@ function IconPin(props: Readonly<{ className?: string }>) {
     >
       <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
       <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
+function IconReceipt(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <path d="M6 2h12v20l-2-1-2 1-2-1-2 1-2-1-2 1V2Z" />
+      <path d="M9 6h6" />
+      <path d="M9 10h6" />
+      <path d="M9 14h4" />
+    </svg>
+  );
+}
+
+function IconGlobe(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a14 14 0 0 1 0 18" />
+      <path d="M12 3a14 14 0 0 0 0 18" />
     </svg>
   );
 }

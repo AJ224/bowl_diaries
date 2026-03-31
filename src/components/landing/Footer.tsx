@@ -1,14 +1,23 @@
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container";
+import urls from "@/config/urls.json";
 
 type FooterLink = { label: string; href: string };
 
 export function Footer() {
+  const info = {
+    phoneLabel: "+91 77700 60798",
+    phoneHref: urls.callUrl ?? "tel:+917770060798",
+    emailLabel: "info@bowldiaries.com",
+    emailHref: "mailto:info@bowldiaries.com",
+    deliveryTiming: "11:30 am to 10pm",
+  };
+
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white md:min-h-[486px]"
+      className="relative overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white"
     >
       {/* background artwork */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -23,7 +32,7 @@ export function Footer() {
       </div>
 
       {/* mascot artwork (bottom-right) */}
-      <div className="pointer-events-none absolute bottom-[-10px] right-2 z-[5] hidden w-[240px] md:block md:bottom-[-18px] md:right-4 md:w-[340px] lg:bottom-[-24px] lg:right-6 lg:w-[420px]">
+      <div className="pointer-events-none absolute bottom-[-12px] right-2 z-[5] hidden w-[220px] md:block md:bottom-[-18px] md:right-4 md:w-[260px] lg:bottom-[-22px] lg:right-6 lg:w-[320px]">
         <Image
           src="/footer_mascout.png"
           alt=""
@@ -34,83 +43,165 @@ export function Footer() {
         />
       </div>
 
-      <Container className="relative z-10 py-8 md:py-16">
-        {/* Main grid: logo+contact on left, nav columns on right */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-6 lg:gap-8">
-          {/* Left: Logo + Contact Info */}
-          <div className="ds-anim-fade-up">
+      <Container className="relative z-10 py-8 md:py-10">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-7 text-center md:grid-cols-4 md:gap-8 md:text-left">
+          {/* 1) Logo */}
+          <div className="ds-anim-fade-up col-span-2 flex flex-col items-center md:col-span-1 md:items-start">
             <Image
               src="/footer_logo.png"
               alt="Bowl Diaries"
-              width={220}
-              height={120}
+              width={170}
+              height={90}
               priority={false}
-              className="h-auto w-[160px] md:w-[200px] lg:w-[220px]"
+              className="h-auto w-[110px] md:w-[130px]"
             />
+          </div>
 
-            <div className="mt-4 space-y-3 text-white/90 md:mt-6 md:space-y-4">
-              {/* Address */}
-              <div className="flex gap-3">
-                <IconPin className="mt-0.5 size-4 shrink-0 text-white/80 md:size-[18px]" />
-                <p
-                  className="text-[18px] font-normal leading-snug tracking-[0] md:text-[20px]"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat,
-                  Vasai West, Mulgaon, Vasai-Virar, Maharashtra 401207
-                </p>
-              </div>
-
-              {/* Phone */}
-              <div className="flex items-center gap-3">
-                <IconPhone className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+          {/* 2) Info */}
+          <div className="ds-anim-fade-up [animation-delay:60ms] col-span-2 md:col-span-1">
+            <h3
+              className="text-[16px] font-semibold leading-tight text-[#f6c200]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Info
+            </h3>
+            <div className="mt-3 space-y-2.5 text-white/85">
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconPhone className="size-4 shrink-0 text-white/80" />
                 <a
-                  className="text-[18px] font-normal leading-snug transition hover:text-white md:text-[20px]"
-                  href="tel:+917770060798"
+                  className="text-[14px] leading-relaxed transition hover:text-white md:text-[15px]"
+                  href={info.phoneHref}
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  +91 77700 60798
+                  {info.phoneLabel}
                 </a>
               </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-3">
-                <IconMail className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconMail className="size-4 shrink-0 text-white/80" />
                 <a
-                  className="text-[18px] font-normal leading-snug transition hover:text-white md:text-[20px]"
-                  href="mailto:info@bowldiaries.com"
+                  className="text-[14px] leading-relaxed transition hover:text-white md:text-[15px]"
+                  href={info.emailHref}
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  info@bowldiaries.com
+                  {info.emailLabel}
                 </a>
+              </div>
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconClock className="size-4 shrink-0 text-white/80" />
+                <span className="text-[14px] leading-relaxed text-white/85 md:text-[15px]" style={{ fontFamily: "var(--font-body)" }}>
+                  Rekadi (Delivery timing): {info.deliveryTiming}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* On mobile: 3 columns for link sections. On md+: keep 4-col layout via contents */}
-          <div className="grid grid-cols-3 gap-4 md:contents">
-            {/* Company */}
-            <FooterCol
-              title="Company"
-              links={[
-                { label: "About Us", href: "#about" },
-                { label: "Our Story", href: "#about" },
-                { label: "Location", href: "#contact" },
-              ]}
-            />
+          {/* 3) Links (single column, title links only) */}
+          <div className="ds-anim-fade-up [animation-delay:110ms] col-span-1">
+            <h3
+              className="text-[16px] font-semibold leading-tight text-[#f6c200]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Links
+            </h3>
+            <ul className="mt-3 space-y-2">
+              {(
+                [
+                  { label: "About Us", href: "#bowlie" },
+                  { label: "Our Story", href: "#story" },
+                  { label: "Contact Us", href: info.phoneHref },
+                  { label: "Help & Support", href: info.phoneHref },
+                  { label: "Privacy Policy", href: "/privacy-policy" },
+                ] satisfies FooterLink[]
+              ).map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    className="text-[13px] font-semibold tracking-wide text-white/85 transition hover:text-white md:text-[14px]"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Get Help */}
-            <FooterCol
-              title="Get Help"
-              links={[
-                { label: "Contact Us", href: "#contact" },
-                { label: "Help & Support", href: "#contact" },
-                { label: "Location", href: "#contact" },
-              ]}
-            />
+          {/* 4) Social + Order now icons */}
+          <div className="ds-anim-fade-up [animation-delay:160ms] col-span-1">
+            <h3
+              className="text-[16px] font-semibold leading-tight text-[#f6c200]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Social Media
+            </h3>
+            <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
+              <a
+                href="https://www.instagram.com/bowl.diaries/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                aria-label="Instagram"
+              >
+                <IconInstagram className="size-5 text-white" />
+              </a>
+              <a
+                href="https://www.facebook.com/bowl.diaries"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                aria-label="Facebook"
+              >
+                <IconFacebook className="size-5 text-white" />
+              </a>
+            </div>
 
-            {/* Social Media */}
-            <SocialCol />
+            <div className="mt-5">
+              <div
+                className="text-[16px] font-semibold leading-tight text-[#f6c200]"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Order Now
+              </div>
+              <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
+                <a
+                  href={urls.zomatoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                  aria-label="Order on Zomato"
+                >
+                  <BrandMark label="Z" className="bg-[#E23744] text-white" />
+                </a>
+                <a
+                  href={urls.swiggyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                  aria-label="Order on Swiggy"
+                >
+                  <BrandMark label="S" className="bg-[#FC8019] text-white" />
+                </a>
+                {urls.petpoojaUrl && urls.petpoojaUrl.trim().length > 0 ? (
+                  <a
+                    href={urls.petpoojaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                    aria-label="Order on Petpooja"
+                  >
+                    <BrandMark label="P" className="bg-[#00AEEF] text-white" />
+                  </a>
+                ) : (
+                  <span
+                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/5"
+                    aria-label="Petpooja"
+                    title="Petpooja link coming soon"
+                  >
+                    <BrandMark label="P" className="bg-[#00AEEF] text-white" />
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </Container>
@@ -118,82 +209,22 @@ export function Footer() {
   );
 }
 
-function FooterCol({
-  title,
-  links,
-  className,
-}: Readonly<{ title: string; links: FooterLink[]; className?: string }>) {
-  return (
-    <div className={`ds-anim-fade-up ${className ?? ""}`}>
-      <h3
-        className="text-[24px] font-medium leading-tight text-[#f6c200] md:text-[28px]"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {title}
-      </h3>
-      <ul className="mt-3 space-y-2.5 md:mt-6 md:space-y-3.5">
-        {links.map((l) => (
-          <li key={l.label}>
-            <a
-              href={l.href}
-              className="text-[18px] font-normal leading-snug text-white/80 transition hover:text-white md:text-[20px]"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function SocialCol() {
-  return (
-    <div className="ds-anim-fade-up">
-      <h3
-        className="text-[24px] font-medium leading-tight text-[#f6c200] md:text-[28px]"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        Social Media
-      </h3>
-      <div className="mt-3 flex items-center gap-3 md:mt-6">
-        <a
-          href="https://instagram.com"
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-          aria-label="Instagram"
-        >
-          <IconInstagram className="size-5 text-white" />
-        </a>
-        <a
-          href="https://facebook.com"
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-          aria-label="Facebook"
-        >
-          <IconFacebook className="size-5 text-white" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
 /* ── Icons ── */
 
-function IconPin(props: Readonly<{ className?: string }>) {
+function BrandMark({
+  label,
+  className,
+}: Readonly<{
+  label: string;
+  className: string;
+}>) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={props.className}
+    <span
+      className={`grid size-7 shrink-0 place-items-center rounded-lg text-[12px] font-extrabold ${className}`}
       aria-hidden="true"
     >
-      <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
-      <circle cx="12" cy="10" r="2.5" />
-    </svg>
+      {label}
+    </span>
   );
 }
 
@@ -228,6 +259,24 @@ function IconMail(props: Readonly<{ className?: string }>) {
     >
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <path d="m22 7-10 7L2 7" />
+    </svg>
+  );
+}
+
+function IconClock(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
     </svg>
   );
 }

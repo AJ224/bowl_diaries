@@ -8,7 +8,7 @@ import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundS
 
 export function BowlieWelcomeShowcase() {
   return (
-    <section className="bg-[#fbf3df] pb-10 md:pb-14">
+    <section id="bowlie" className="bg-[#fbf3df] pb-10 scroll-mt-16 md:pb-14">
       <div className="grid">
         {/* Bowlie row */}
         <div className="relative overflow-visible">
@@ -90,7 +90,10 @@ export function BowlieWelcomeShowcase() {
         </div>
 
         {/* Welcome row */}
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 pt-2 md:grid-cols-[1fr_1fr] md:items-end md:px-6 md:pt-0 md:-mt-10">
+        <div
+          id="story"
+          className="mx-auto grid w-full max-w-6xl gap-10 px-5 pt-2 scroll-mt-16 md:grid-cols-[1fr_1fr] md:items-end md:px-6 md:pt-0 md:-mt-10"
+        >
           <div className="ds-anim-fade-up md:relative md:-top-10">
             <div
               className="text-left font-medium leading-tight tracking-[0] text-[#F1C400]"
