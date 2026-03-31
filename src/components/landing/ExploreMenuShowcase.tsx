@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import buttonUrls from "@/config/buttonUrls.json";
+import urls from "@/config/urls.json";
 import { Container } from "@/components/ui/Container";
 import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundSection";
@@ -66,7 +66,7 @@ export function ExploreMenuShowcase() {
                 <div className="text-center ds-grift-32 text-[#002B2B]">
                   {c.title}
                 </div>
-                <CtaButtonLink href={buttonUrls.orderNow} variant="menuCard">
+                <CtaButtonLink href={urls.orderNowUrl} variant="menuCard">
                   ORDER NOW
                 </CtaButtonLink>
               </div>

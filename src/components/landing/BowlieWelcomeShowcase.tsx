@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { CartIcon } from "@/components/icons/CartIcon";
-import buttonUrls from "@/config/buttonUrls.json";
+import urls from "@/config/urls.json";
 import { PrimaryButtonLink } from "@/components/ui/ButtonLink";
 import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundSection";
@@ -64,7 +64,7 @@ export function BowlieWelcomeShowcase() {
                   />
                 </div>
                 <CtaButtonLink
-                  href={buttonUrls.orderNow}
+                  href={urls.orderNowUrl}
                   variant="floating"
                   className="pointer-events-auto ds-anim-fade-up [animation-delay:140ms]"
                 >
@@ -127,7 +127,7 @@ export function BowlieWelcomeShowcase() {
 
             <div className="mt-7">
               <PrimaryButtonLink
-                href={buttonUrls.orderNow}
+                href={urls.orderNowUrl}
                 className="bg-[#0f5a3c] text-white shadow-[0_6px_0_rgba(0,0,0,0.14)]"
               >
                 ORDER NOW

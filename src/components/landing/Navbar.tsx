@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { CartIcon } from "@/components/icons/CartIcon";
-import buttonUrls from "@/config/buttonUrls.json";
+import urls from "@/config/urls.json";
 import { Container } from "@/components/ui/Container";
 import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 
@@ -38,7 +38,7 @@ export function Navbar() {
 
         <div className="flex items-center justify-end gap-3">
           <CtaButtonLink
-            href={buttonUrls.orderNow}
+            href={urls.orderNowUrl}
             variant="navbar"
             className="hidden md:inline-flex ds-anim-fade-in"
           >
