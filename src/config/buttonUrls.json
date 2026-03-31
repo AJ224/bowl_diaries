@@ -1,0 +1,12 @@
+{
+  "orderNow": "#menu",
+  "exploreMenu": "#menu",
+  "orderMenu": {
+    "call": "tel:+917770060798",
+    "location": "#",
+    "takeaway": "#",
+    "zomato": "#",
+    "swiggy": "#",
+    "petpooja": "#"
+  }
+}

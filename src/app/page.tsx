@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { HeroPromoBar } from "@/components/landing/HeroPromoBar";
 import { Navbar } from "@/components/landing/Navbar";
 import { WhyBowlDiariesBar } from "@/components/landing/WhyBowlDiariesBar";
+import { FloatingOrderButton } from "@/components/ui/FloatingOrderButton";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <FloatingOrderButton />
     </div>
   );
 }

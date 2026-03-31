@@ -1,4 +1,5 @@
 import { CartIcon } from "@/components/icons/CartIcon";
+import buttonUrls from "@/config/buttonUrls.json";
 import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 
 export function HeroPromoBar() {
@@ -20,7 +21,11 @@ export function HeroPromoBar() {
           </div>
         </div>
 
-        <CtaButtonLink href="#menu" variant="promoBar" className="ds-anim-fade-up [animation-delay:90ms]">
+        <CtaButtonLink
+          href={buttonUrls.orderNow}
+          variant="promoBar"
+          className="ds-anim-fade-up [animation-delay:90ms]"
+        >
           <CartIcon className="size-6 md:size-7" />
           Order Now
         </CtaButtonLink>
