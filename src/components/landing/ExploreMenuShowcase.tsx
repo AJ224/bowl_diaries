@@ -15,9 +15,6 @@ export function ExploreMenuShowcase() {
     { title: "RICE BOWLS", imageSrc: "/menu_1.png" },
     { title: "INDIAN BOWLS", imageSrc: "/menu_2.png" },
     { title: "PASTA BOWLS", imageSrc: "/menu_3.png" },
-    { title: "SALAD BOWLS", imageSrc: "/menu_1.png" },
-    { title: "NOODLE BOWLS", imageSrc: "/menu_2.png" },
-    { title: "SNACKS", imageSrc: "/menu_3.png" },
   ];
 
   return (
