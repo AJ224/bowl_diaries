@@ -16,7 +16,8 @@ type FullBleedBackgroundSectionProps = Readonly<{
   minHeight?: string;
   contentClassName?: string;
   children?: React.ReactNode;
-}>;
+}> &
+  Omit<React.HTMLAttributes<HTMLElement>, "className">;
 
 export function FullBleedBackgroundSection({
   as = "section",
@@ -30,11 +31,15 @@ export function FullBleedBackgroundSection({
   minHeight,
   contentClassName,
   children,
+  ...rest
 }: FullBleedBackgroundSectionProps) {
   const Tag = as;
 
   return (
-    <Tag className={`relative w-full overflow-hidden ${className ?? ""}`}>
+    <Tag
+      {...(rest as React.HTMLAttributes<HTMLElement>)}
+      className={`relative w-full overflow-hidden ${className ?? ""}`}
+    >
       <div className={`pointer-events-none absolute inset-0 ${backgroundWrapperClassName}`}>
         <Image
           src={backgroundSrc}

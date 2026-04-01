@@ -22,7 +22,7 @@ export function Navbar() {
 
   const [open, setOpen] = useState(false);
   const panelId = useId();
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
