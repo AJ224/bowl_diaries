@@ -18,7 +18,6 @@ export default function Home() {
         <HeroPromoBar />
         <BowlieWelcomeShowcase />
         <WhyBowlDiariesBar />
-        <ExploreMenuShowcase />
         <ExcellenceShowcase />
       </main>
 
