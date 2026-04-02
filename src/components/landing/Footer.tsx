@@ -163,24 +163,42 @@ export function Footer() {
                 Order Now
               </div>
               <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
-                <a
-                  href={urls.zomatoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-                  aria-label="Order on Zomato"
-                >
-                  <BrandMark label="Z" className="bg-[#E23744] text-white" />
-                </a>
-                <a
-                  href={urls.swiggyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-                  aria-label="Order on Swiggy"
-                >
-                  <BrandMark label="S" className="bg-[#FC8019] text-white" />
-                </a>
+                {urls.zomatoUrl && urls.zomatoUrl.trim().length > 0 ? (
+                  <a
+                    href={urls.zomatoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                    aria-label="Order on Zomato"
+                  >
+                    <Image
+                      src="/zomato.webp"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 object-contain"
+                    />
+                  </a>
+                ) : null}
+
+                {urls.swiggyUrl && urls.swiggyUrl.trim().length > 0 ? (
+                  <a
+                    href={urls.swiggyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                    aria-label="Order on Swiggy"
+                  >
+                    <Image
+                      src="/swiggy.png"
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 object-contain"
+                    />
+                  </a>
+                ) : null}
+
                 {urls.petpoojaUrl && urls.petpoojaUrl.trim().length > 0 ? (
                   <a
                     href={urls.petpoojaUrl}
@@ -191,15 +209,7 @@ export function Footer() {
                   >
                     <BrandMark label="P" className="bg-[#00AEEF] text-white" />
                   </a>
-                ) : (
-                  <span
-                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/5"
-                    aria-label="Petpooja"
-                    title="Petpooja link coming soon"
-                  >
-                    <BrandMark label="P" className="bg-[#00AEEF] text-white" />
-                  </span>
-                )}
+                ) : null}
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 
 import { CartIcon } from "@/components/icons/CartIcon";
 import urls from "@/config/urls.json";
@@ -34,7 +35,7 @@ function BrandMark({
 export function FloatingOrderButton() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef<HTMLDialogElement | null>(null);
 
   const items = useMemo<MenuItem[]>(() => {
     const list: MenuItem[] = [
@@ -64,14 +65,30 @@ export function FloatingOrderButton() {
         key: "zomato",
         label: "Zomato",
         href: urls.zomatoUrl ?? "",
-        icon: <BrandMark label="Z" className="bg-[#E23744] text-white" />,
+        icon: (
+          <Image
+            src="/zomato.webp"
+            alt=""
+            width={40}
+            height={40}
+            className="h-full w-full object-contain"
+          />
+        ),
         external: true,
       },
       {
         key: "swiggy",
         label: "Swiggy",
         href: urls.swiggyUrl ?? "",
-        icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
+        icon: (
+          <Image
+            src="/swiggy.png"
+            alt=""
+            width={40}
+            height={40}
+            className="h-full w-full object-contain"
+          />
+        ),
         external: true,
       },
     ];
@@ -80,12 +97,25 @@ export function FloatingOrderButton() {
   }, []);
 
   useEffect(() => {
+    function syncFromHash() {
+      if (globalThis.location?.hash === "#order") setOpen(true);
+    }
+    syncFromHash();
+    globalThis.addEventListener("hashchange", syncFromHash);
+    return () => globalThis.removeEventListener("hashchange", syncFromHash);
+  }, []);
+
+  useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
     }
     function onPointerDown(e: PointerEvent) {
-      if (!rootRef.current) return;
-      if (rootRef.current.contains(e.target as Node)) return;
+      if (!modalRef.current) return;
+      if (e.target === modalRef.current) {
+        modalRef.current.close();
+        return;
+      }
+      if (modalRef.current.contains(e.target as Node)) return;
       setOpen(false);
     }
 
@@ -96,6 +126,13 @@ export function FloatingOrderButton() {
       globalThis.removeEventListener("keydown", onKeyDown);
       globalThis.removeEventListener("pointerdown", onPointerDown);
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (open) return;
+    if (globalThis.location?.hash !== "#order") return;
+    const url = `${globalThis.location.pathname}${globalThis.location.search}`;
+    globalThis.history.replaceState(null, "", url);
   }, [open]);
 
   if (items.length === 0) return null;
@@ -114,71 +151,94 @@ export function FloatingOrderButton() {
       ) : null}
 
       <div
-        ref={rootRef}
         className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
       >
-      {open ? (
-        <div
-          id={panelId}
-          role="menu"
-          aria-label="Order options"
-          className="w-[min(320px,calc(100vw-3rem))] overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/95 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur"
-        >
-          <div className="px-4 pb-2 pt-4">
-            <div className="text-sm font-extrabold tracking-wide text-[#002B2B]">
-              Order options
-            </div>
-            <div className="mt-1 text-xs font-semibold text-zinc-600">
-              Choose where you want to order from
-            </div>
-          </div>
-
-          <div className="grid gap-1 px-2 pb-2">
-            {items.map((item) => {
-              const isExternal =
-                item.external &&
-                !item.href.startsWith("#") &&
-                !item.href.startsWith("tel:");
-              return (
-                <a
-                  key={item.key}
-                  role="menuitem"
-                  href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-zinc-900/5 active:bg-zinc-900/10"
-                  onClick={() => setOpen(false)}
+        {open ? (
+          <div className="fixed inset-0 z-[70] px-5 md:px-6">
+            <dialog
+              ref={(node) => {
+                modalRef.current = node;
+                if (node && !node.open) node.showModal();
+              }}
+              id={panelId}
+              aria-label="Order options"
+              className="fixed left-1/2 top-1/2 m-0 w-[min(420px,calc(100vw-2.5rem))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl border border-zinc-900/10 bg-white/95 p-0 shadow-[0_28px_80px_rgba(0,0,0,0.35)] backdrop:bg-black/40 backdrop:backdrop-blur-[2px]"
+              onClose={() => setOpen(false)}
+            >
+              <div className="flex items-start justify-between gap-4 px-5 pb-3 pt-5">
+                <div>
+                  <div className="text-base font-extrabold tracking-wide text-[#002B2B]">
+                    Order options
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-zinc-600">
+                    Choose where you want to order from
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => modalRef.current?.close()}
+                  className="inline-flex size-10 items-center justify-center rounded-2xl border border-zinc-900/10 bg-white/70 text-zinc-900 transition hover:bg-white"
+                  aria-label="Close order options"
                 >
-                  <span className="grid size-9 place-items-center rounded-xl bg-zinc-900/5 text-[#002B2B]">
-                    {item.icon}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-extrabold text-[#002B2B]">
-                      {item.label}
-                    </span>
-                    {item.subLabel ? (
-                      <span className="block truncate text-xs font-semibold text-zinc-600">
-                        {item.subLabel}
+                  ✕
+                </button>
+              </div>
+
+              <div className="grid gap-1.5 px-3 pb-4">
+                {items.map((item) => {
+                  const isExternal =
+                    item.external &&
+                    !item.href.startsWith("#") &&
+                    !item.href.startsWith("tel:");
+                  return (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="group flex items-center gap-3 rounded-2xl px-4 py-3 transition hover:bg-zinc-900/5 active:bg-zinc-900/10"
+                      onClick={() => modalRef.current?.close()}
+                    >
+                      <span className="grid size-10 place-items-center rounded-2xl bg-zinc-900/5 text-[#002B2B]">
+                        {item.icon}
                       </span>
-                    ) : null}
-                  </span>
-                  <span className="ml-auto text-zinc-400 transition group-hover:text-zinc-700">
-                    ›
-                  </span>
-                </a>
-              );
-            })}
+                      <span className="min-w-0">
+                        <span className="block truncate text-[15px] font-extrabold text-[#002B2B]">
+                          {item.label}
+                        </span>
+                        {item.subLabel ? (
+                          <span className="block truncate text-[13px] font-semibold text-zinc-600">
+                            {item.subLabel}
+                          </span>
+                        ) : null}
+                      </span>
+                      <span className="ml-auto text-zinc-400 transition group-hover:text-zinc-700">
+                        ›
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </dialog>
           </div>
-        </div>
-      ) : null}
+        ) : null}
 
       {/* FAB */}
       <button
         type="button"
-        aria-haspopup="menu"
+        aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          if (open) {
+            modalRef.current?.close();
+            return;
+          }
+          if (globalThis.location?.hash !== "#order") {
+            globalThis.history.pushState(null, "", "#order");
+          }
+          setOpen(true);
+        }}
         className="inline-flex items-center gap-3 rounded-2xl border border-zinc-900/10 bg-white/55 px-5 py-4 text-[#002B2B] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur transition hover:bg-white/65 active:translate-y-[1px]"
       >
         <span className="grid size-9 place-items-center rounded-xl bg-zinc-900/5">
