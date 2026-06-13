@@ -1,6 +1,8 @@
 import Image from "next/image";
 
+import { CartIcon } from "@/components/icons/CartIcon";
 import { Container } from "@/components/ui/Container";
+import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 import urls from "@/config/urls.json";
 
 type FooterLink = { label: string; href: string };
@@ -155,63 +157,14 @@ export function Footer() {
               </a>
             </div>
 
-            <div className="mt-5">
-              <div
-                className="text-[16px] font-semibold leading-tight text-[#f6c200]"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Order Now
+            {urls.orderNowUrl?.trim() ? (
+              <div className="mt-5 flex justify-center md:justify-start">
+                <CtaButtonLink href={urls.orderNowUrl} variant="navbar">
+                  <CartIcon className="size-5" />
+                  Order Now
+                </CtaButtonLink>
               </div>
-              <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
-                {urls.zomatoUrl && urls.zomatoUrl.trim().length > 0 ? (
-                  <a
-                    href={urls.zomatoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-                    aria-label="Order on Zomato"
-                  >
-                    <Image
-                      src="/zomato.webp"
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="h-8 w-8 object-contain"
-                    />
-                  </a>
-                ) : null}
-
-                {urls.swiggyUrl && urls.swiggyUrl.trim().length > 0 ? (
-                  <a
-                    href={urls.swiggyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-                    aria-label="Order on Swiggy"
-                  >
-                    <Image
-                      src="/swiggy.png"
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="h-8 w-8 object-contain"
-                    />
-                  </a>
-                ) : null}
-
-                {urls.petpoojaUrl && urls.petpoojaUrl.trim().length > 0 ? (
-                  <a
-                    href={urls.petpoojaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-                    aria-label="Order on Petpooja"
-                  >
-                    <BrandMark label="P" className="bg-[#00AEEF] text-white" />
-                  </a>
-                ) : null}
-              </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </Container>
@@ -220,23 +173,6 @@ export function Footer() {
 }
 
 /* ── Icons ── */
-
-function BrandMark({
-  label,
-  className,
-}: Readonly<{
-  label: string;
-  className: string;
-}>) {
-  return (
-    <span
-      className={`grid size-7 shrink-0 place-items-center rounded-lg text-[12px] font-extrabold ${className}`}
-      aria-hidden="true"
-    >
-      {label}
-    </span>
-  );
-}
 
 function IconPhone(props: Readonly<{ className?: string }>) {
   return (
